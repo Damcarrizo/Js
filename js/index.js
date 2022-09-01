@@ -8,9 +8,6 @@ else
 if (vehiculo == 'van'){vehiculo = 3500}
 else
 if (vehiculo== 'camioneta'){vehiculo = 4500}
-return "precio total:" + (vehiculo + monto)
-while
-    (vehiculo =! 'auto' || 'van' || 'camioneta')
-    return window.alert ('Ingresaste un vehiculo incorrecto')
 
+return "precio total:" + (vehiculo + monto)
 }
