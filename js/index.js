@@ -1,13 +1,20 @@
 
-const btnAgregar = document.querySelector("#btnAgregar")
-
-function enviar(){
-alert("Reserva confirmada")
-}
-
-btnAgregar.addEventListener("click", enviar)
-
 const inputs = document.querySelectorAll("input")
+let inputsGuardados = []
+inputs.forEach (input=>{
+    console.log(input.value)
+
+const btnAgregar = document.querySelector("#btnAgregar")
+btnAgregar.addEventListener("click", enviar)
+})
+function guardarInputs(){
+    inputsGuardados.push(inputs.value)
+    console.table(inputsGuardados)
+}
+function enviar(){
+    alert("Reserva confirmada")
+    }
+
 
 // //function reservarResto ()
 // //const resto1 = {
