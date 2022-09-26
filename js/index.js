@@ -1,19 +1,106 @@
+//CONEXION CON DOM JS
+const restaurante = document.querySelector("#restaurante")
+const nombre_completo = document.querySelector("#inputNombre")
+const comensales = document.querySelector("#inputComensales")
+const dia = document.querySelector("#inputDia")
+const btnReserva = document.querySelector("#btnReserva")
 
-const inputs = document.querySelectorAll("input")
-let inputsGuardados = []
-inputs.forEach (input=>{
-    console.log(input.value)
 
-const btnAgregar = document.querySelector("#btnAgregar")
-btnAgregar.addEventListener("click", enviar)
-})
-function guardarInputs(){
-    inputsGuardados.push(inputs.value)
-    console.table(inputsGuardados)
-}
-function enviar(){
-    alert("Reserva confirmada")
+//Constructor
+
+class Reserva{
+    constructor(restaurante, nombre_completo, comensales, dia){
+        this.restaurante = restaurante
+        this.nombre_completo = nombre_completo
+        this.comensales  = parseInt(comensales)
+        this.dia = dia
     }
+    confirmarReserva(){
+        let confirmar = (this.restaurante && this.nombre_completo && this.comensales && this.dia)
+        return confirmar
+    }
+}
+
+
+
+// Base datos ficticia
+const nombresRestaurantes = [{nombre: "Constanza", Capacidad: 40},
+                             {nombre: "Lo de Luis", Capacidad: 40},
+                             {nombre: "Bamboo", Capacidad: 40},
+                             {nombre: "El Tuerto", Capacidad: 40},
+]
+
+const diaReserva =[ {dia:"Martes"}, 
+                    {dia:"Miercoles"},
+                    {dia:"Jueves"},
+                    {dia:"Viernes"},
+                    {dia:"Sabado"},
+                    {dia:"Domingo"},
+]
+
+
+//Datos Cargados
+const cargarDatos = (restaurante, array)=> {
+    if (array.length > 0) {
+        array.forEach(elemento => {
+            restaurante.innerHTML += `<option value=" ${elemento.Capacidad}">${elemento.nombre}</option>`
+            })
+    }else{
+        console.error("No existen elementos en el array")
+    }
+}
+
+const cargarDia = (inputDia,array)=> {
+    if (array.length > 0) {
+        array.forEach(elemento => {
+            inputDia.innerHTML += `<option value="">${elemento.Dia}</option>`
+            })
+    }else{
+        console.error("No existen elementos en el array")
+    }
+}
+cargarDatos (restaurante, nombresRestaurantes)
+cargarDia (inputDia, diaReserva)
+
+//Datos completos
+
+const datosCompletos = () => {
+    if (restaurante.value !== "..." && nombre_completo.value !== "" &&  comensales.value >=1  && comensales.value <=10 && dia.value !== "..." ) {
+    return true}
+    else {
+        return false
+    }
+} 
+
+const realizarReserva = () => {
+    if(datosCompletos()) {
+        const reserva = new Reserva (restaurante.value, nombre_completo.value, comensales.value, dia.value)
+        reserva.confirmarReserva()
+    }else{
+        alert(" ✋ Completa los datos para reservar.")
+    }
+}
+
+
+const enviarReserva = () => {
+    const enviar = {
+        fechareserva: new Date () .toLocaleDateString(),
+        restaurante: restaurante[restaurante.selectedIndex].text,
+        nombre: nombre_completo[nombre_completo.value].text,
+        comensales: comensales[comensales.value].text,
+        dia: dia[dia.selectedIndex].text
+    }
+    localStorage.setItem("Reserva", JSON.stringify(enviar))
+    alert("Reseva confirmada, nos vemos pronto :wink:")
+    btnReserva.addEventListener("click",()=> realizarReserva)
+
+}
+
+
+
+btnReserva.addEventListener("click",()=> realizarReserva)
+
+
 
 
 // //function reservarResto ()

@@ -4,17 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+    <script src="./assets/bootstrap/js/jquery.slim.min.js"></script>
+    <script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/bootstrap/js/wow.js"></script>
+    <script> new WOW().init(); </script>
+    <link rel="stylesheet" href="./assets/bootstrap/css/animate.css">
+    <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="./assets/estilos/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@700&family=Oswald:wght@500&display=swap" rel="stylesheet">
     <script defer src="js/index.js"></script>
     <title>Proyecto Js</title>
 </head>
 <body>
     <h1>Reserva Resto</h1>
     <p>Completa los datos para la Reserva</p>
-    <form action="" autocomplete="off" method="post">
-        <input type="text" id="inputNombre" placeholder="Nombre completo">
-        <input type="number" id="inputComensales" placeholder="Cantidad Comensales">
-        <input type="text" id="inputDia" placeholder="Dia">
-        <button type="submit" id="btnAgregar">Reserva</button>
+    <form class="contacto" action="" autocomplete="off" method="post">
+        <label for="restaurante">Selecciona el restaurante</label>
+        <select id="restaurante">
+          <option selected disabled>...</option>
+        </select>
+        <label for="Nombre_completo">Nombre Completo</label>
+        <input type="text" id="inputNombre" placeholder="Damian Carrizo">
+        <label for= "Comensales"> Comensales</label>
+        <input type="number" id="inputComensales" placeholder="Cantidad" min="1" max="10">
+        <label for="Dia">Dia</label>
+        <select id="inputDia">
+            <option selected disabled>...</option>
+        </select>
+        <button type="button" id="btnReserva">Reserva</button>
     </form>
 </body>
 </html>

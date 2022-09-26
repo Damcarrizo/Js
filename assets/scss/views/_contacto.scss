@@ -1,0 +1,21 @@
+.mb-3{
+    padding: $xsmall;
+    font-size: 30px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin: auto;
+    font-family: $fuente-secundaria;
+
+}
+
+.form-control{
+    min-width: 150px;
+}
+
+@media screen and (max-width: 600px){
+    .mb-3{
+        width: 83%;
+    } 
+}
