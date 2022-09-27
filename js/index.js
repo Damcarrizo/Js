@@ -43,7 +43,7 @@ const diaReserva =[ {dia:"Martes"},
 const cargarDatos = (restaurante, array)=> {
     if (array.length > 0) {
         array.forEach(elemento => {
-            restaurante.innerHTML += `<option value=" ${elemento.Capacidad}">${elemento.nombre}</option>`
+            restaurante.innerHTML += `<option value=" ${elemento.nombre}">${elemento.nombre}</option>`
             })
     }else{
         console.error("No existen elementos en el array")
@@ -53,7 +53,7 @@ const cargarDatos = (restaurante, array)=> {
 const cargarDia = (inputDia,array)=> {
     if (array.length > 0) {
         array.forEach(elemento => {
-            inputDia.innerHTML += `<option value="">${elemento.dia}</option>`
+            inputDia.innerHTML += `<option value="${elemento.dia}">${elemento.dia}</option>`
             })
     }else{
         console.error("No existen elementos en el array")
@@ -74,6 +74,7 @@ const datosCompletos = () => {
 } 
 
 const realizarReserva = () => {
+    debugger
     console.log("hola")
     if(datosCompletos()) {
         const reserva = new Reserva (restaurante.value, nombre_completo.value, comensales.value, dia.value)
