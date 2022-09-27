@@ -93,13 +93,6 @@ const enviarReserva = (reserva) => {
 btnReserva.addEventListener("click",realizarReserva)
 
 
-
-
-
-
-btnReserva.addEventListener("click",()=> realizarReserva)
-
-
 // //const enviarReserva = () => {
 //     const enviar = {
 //         fechareserva: new Date () .toLocaleDateString(),
