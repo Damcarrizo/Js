@@ -74,7 +74,6 @@ const datosCompletos = () => {
 } 
 
 const realizarReserva = () => {
-    debugger
     console.log("hola")
     if(datosCompletos()) {
         const reserva = new Reserva (restaurante.value, nombre_completo.value, comensales.value, dia.value)
