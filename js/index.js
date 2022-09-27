@@ -53,7 +53,7 @@ const cargarDatos = (restaurante, array)=> {
 const cargarDia = (inputDia,array)=> {
     if (array.length > 0) {
         array.forEach(elemento => {
-            inputDia.innerHTML += `<option value="">${elemento.Dia}</option>`
+            inputDia.innerHTML += `<option value="">${elemento.dia}</option>`
             })
     }else{
         console.error("No existen elementos en el array")
@@ -65,36 +65,47 @@ cargarDia (inputDia, diaReserva)
 //Datos completos
 
 const datosCompletos = () => {
+
     if (restaurante.value !== "..." && nombre_completo.value !== "" &&  comensales.value >=1  && comensales.value <=10 && dia.value !== "..." ) {
-    return true}
-    else {
+    return true
+}else {
         return false
     }
 } 
 
 const realizarReserva = () => {
+    console.log("hola")
     if(datosCompletos()) {
         const reserva = new Reserva (restaurante.value, nombre_completo.value, comensales.value, dia.value)
-        reserva.confirmarReserva()
+        enviarReserva(reserva)
     }else{
         alert(" ✋ Completa los datos para reservar.")
     }
 }
 
+const enviarReserva = (reserva) => {
+    localStorage.setItem("Reserva", JSON.stringify(reserva))
 
-const enviarReserva = () => {
-    const enviar = {
-        fechareserva: new Date () .toLocaleDateString(),
-        restaurante: restaurante[restaurante.selectedIndex].text,
-        nombre: nombre_completo[nombre_completo.value].text,
-        comensales: comensales[comensales.value].text,
-        dia: dia[dia.selectedIndex].text
-    }
-    localStorage.setItem("Reserva", JSON.stringify(enviar))
     alert("Reseva confirmada, nos vemos pronto :wink:")
-    btnReserva.addEventListener("click",()=> realizarReserva)
 
 }
+
+btnReserva.addEventListener("click",realizarReserva)
+
+
+// //const enviarReserva = () => {
+//     const enviar = {
+//         fechareserva: new Date () .toLocaleDateString(),
+//         restaurante: restaurante[restaurante.selectedIndex].text,
+//         nombre: nombre_completo[nombre_completo.value].text,
+//         comensales: comensales[comensales.value].text,
+//         dia: dia[dia.selectedIndex].text
+//     }
+//     localStorage.setItem("Reserva", JSON.stringify(enviar))
+//     alert("Reseva confirmada, nos vemos pronto :wink:")
+//     btnReserva.addEventListener("click",()=> realizarReserva)
+
+// }
 
 
 
