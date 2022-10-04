@@ -21,6 +21,14 @@ class Reserva{
     }
 }
 
+const alerta = (icono, titulo, mensaje) => {
+    Swal.fire({
+        icon: icono,
+        title: titulo,
+        text: mensaje,
+      })
+}
+
 
 
 // Base datos ficticia
@@ -79,14 +87,14 @@ const realizarReserva = () => {
         const reserva = new Reserva (restaurante.value, nombre_completo.value, comensales.value, dia.value)
         enviarReserva(reserva)
     }else{
-        alert(" ✋ Completa los datos para reservar.")
+        alerta("warning","Oopss...","✋ Completa los datos para reservar.")
     }
 }
 
 const enviarReserva = (reserva) => {
     localStorage.setItem("Reserva", JSON.stringify(reserva))
 
-    alert("Reseva confirmada, nos vemos pronto :wink:")
+    alerta("succes", "Perfectooo!!!", "Tu reserva ha sido confirmada")
 
 }
 
