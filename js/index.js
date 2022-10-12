@@ -32,6 +32,8 @@ const alerta = (icono, titulo, mensaje) => {
 
 
 // Base datos ficticia
+const URL = "../assets/Datos/Restaurantes.json"
+
 const nombresRestaurantes = [{nombre: "Constanza", Capacidad: 40},
                              {nombre: "Lo de Luis", Capacidad: 40},
                              {nombre: "Bamboo", Capacidad: 40},
@@ -101,6 +103,21 @@ const enviarReserva = (reserva) => {
 btnReserva.addEventListener("click",realizarReserva)
 
 
+const cargarContenido  = async ()=> {
+    try {
+        const response = await fetch(URL)
+        const data = await response.json()
+              console.table(data)
+    } 
+    catch (error) {
+        contenidoHTML += mostrarError()
+    }
+    finally {
+        contenedor.innerHTML = contenidoHTML
+    }
+}
+
+
 // //const enviarReserva = () => {
 //     const enviar = {
 //         fechareserva: new Date () .toLocaleDateString(),
@@ -113,23 +130,5 @@ btnReserva.addEventListener("click",realizarReserva)
 //     alert("Reseva confirmada, nos vemos pronto :wink:")
 //     btnReserva.addEventListener("click",()=> realizarReserva)
 
-// }
-
-// //function reservarResto ()
-// //const resto1 = {
-//     nombre: 'Bamboo',
-//     capacidad: 40
-// }
-// //const resto2 = { 
-//     nombre: 'Sudaca',
-//     capacidad: 40,
-// }
-// const resto3 = {
-//     nombre: 'Lo de chola',
-//     capacidad: 45,
-// }
-// const resto4 ={
-//     nombre: 'Constanza',
-//     capacidad: 45,
 // }
 

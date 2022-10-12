@@ -1,0 +1,29 @@
+[
+{
+"id":1,
+"Nombre": "Constanza",
+"Capacidad": 50,
+"Dias": " Martes,Miercoles,Jueves,Sabado,Domingo"
+},
+
+{
+"id":2,
+"Nombre": "Lo de Luis",
+"Capacidad": 50,
+"Dias": " Martes,Miercoles,Jueves,Sabado,Domingo"
+},
+
+{
+"id":3,
+"Nombre": "Bamboo",
+"Capacidad": 40,
+"Dias": " Martes,Miercoles,Jueves,Sabado,Domingo"
+},
+{
+"id":4,
+"Nombre": "El Tuerto",
+"Capacidad": 60,
+"Dias": " Martes,Miercoles,Jueves,Sabado,Domingo"
+}
+
+]
