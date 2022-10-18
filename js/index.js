@@ -43,8 +43,10 @@ const mostrarDatos = (contenido) =>{
         id,
         Nombre,
         Capacidad,
-        Dias
+        Diasw
     } = contenido
+    return  `<option value=" ${Nombre}">${Nombre}</option>`,
+    `<option value=" ${Dias}">${Dias}</option>`
 }
 
 //Datos Cargados
