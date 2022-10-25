@@ -32,22 +32,41 @@ const alerta = (icono, titulo, mensaje) => {
 
 
 // Base datos ficticia
-const nombresRestaurantes = [{nombre: "Constanza", Capacidad: 40},
-                             {nombre: "Lo de Luis", Capacidad: 40},
-                             {nombre: "Bamboo", Capacidad: 40},
-                             {nombre: "El Tuerto", Capacidad: 40},
-]
+const URL = "../assets/Datos/Restaurantes.json"
+let opcionesResto = []
+contenidoHTML = ""
 
-const diaReserva =[ {dia:"Martes"}, 
-                    {dia:"Miercoles"},
-                    {dia:"Jueves"},
-                    {dia:"Viernes"},
-                    {dia:"Sabado"},
-                    {dia:"Domingo"},
-]
 
+
+const mostrarDatos = (contenido) =>{
+    const{
+        id,
+        Nombre,
+        Capacidad,
+        Dias
+    } = contenido
+    return  `<option value=" ${Nombre}">${Nombre}</option>`,
+    `<option value=" ${Dias}">${Dias}</option>`
+}
 
 //Datos Cargados
+const cargarContenido  = async ()=> {
+    try {
+        const response = await fetch(URL)
+        const data = await response.json()
+              opcionesResto = data
+              opcionesResto.forEach(element =>{
+                contenidoHTML += cargarDatos
+              })
+    } 
+    catch (error) {
+        contenidoHTML += mostrarError()
+    }
+    finally {
+        contenedor.innerHTML = contenidoHTML
+    }
+}
+
 const cargarDatos = (restaurante, array)=> {
     if (array.length > 0) {
         array.forEach(elemento => {
@@ -99,6 +118,7 @@ const enviarReserva = (reserva) => {
 }
 
 btnReserva.addEventListener("click",realizarReserva)
+
 
 
 // //const enviarReserva = () => {
